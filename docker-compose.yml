@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  app:
+    build: ./app
+    container_name: tesla-cn-y-app
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=tesla
+      - DB_PASS=tesla
+      - DB_NAME=tesla
+      - TESLA_API_URL=${TESLA_API_URL}
+      - WECOM_WEBHOOK_URL=${WECOM_WEBHOOK_URL}
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine
+    container_name: tesla-cn-y-db
+    environment:
+      - POSTGRES_USER=tesla
+      - POSTGRES_PASSWORD=tesla
+      - POSTGRES_DB=tesla
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    restart: unless-stopped
