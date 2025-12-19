@@ -1,0 +1,12 @@
+{
+  "name": "tesla-cn-y-monitor",
+  "version": "1.0.0",
+  "main": "src/monitor.js",
+  "scripts": {
+    "start": "node src/monitor.js"
+  },
+  "dependencies": {
+    "node-fetch": "^2.7.0",
+    "pg": "^8.12.0"
+  }
+}
